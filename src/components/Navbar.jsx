@@ -1,5 +1,5 @@
 import React from 'react'
-import { MdOutlineCardTravel } from "react-icons/md";
+import { MdOutlineCardTravel } from "react-icons/md"
 import './Navbar.css'
 
 const Navbar = () => {

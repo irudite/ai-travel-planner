@@ -1,0 +1,14 @@
+.trip__options {
+  display: flex;
+  flex-direction: column;
+}
+
+.trip__options--cost {
+  display: flex;
+  gap: 20px;
+}
+
+.trip__options--size {
+  display: flex;
+  gap: 20px;
+}

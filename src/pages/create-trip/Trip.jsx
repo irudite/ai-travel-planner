@@ -1,5 +1,6 @@
 import React from 'react'
 import { travelSize, budgetSize } from './../../constants/options.jsx'
+import './Trip.css'
 
 const Trip = () => {
   return (
@@ -31,7 +32,7 @@ const Trip = () => {
         <div class='trip__options--size'>
           {travelSize.map((item, index) => (
             <div key={index}>
-              <h2>{item.icon}</h2>
+              <h2>{item.icon} ({item.people} People)</h2>
               <h2>{item.title}</h2>
               <h2>{item.desc}</h2>
             </div>

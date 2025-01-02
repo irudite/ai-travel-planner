@@ -1,14 +1,48 @@
+.trip__header {
+  text-align: center;
+}
+
+.trip__input {
+  display: flex;
+  padding: 20px;
+  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.trip__input h2 {
+  font-size: 15px;
+  font-weight: 500;
+}
+
 .trip__options {
   display: flex;
   flex-direction: column;
+  text-align: center;
+}
+
+.trip__options h2 {
+  font-size: 15px;
+  font-weight: 500;
 }
 
 .trip__options--cost {
   display: flex;
+  justify-content: center;
   gap: 20px;
+}
+
+.trip__options--cost--choices, .trip__options--size--choices {
+  width: 150px;
+  height: 150px;
+  border: 2px black solid;
+  border-radius: 10%;
+  padding: 10px;
+  margin: 5px;
 }
 
 .trip__options--size {
   display: flex;
+  justify-content: center;
   gap: 20px;
 }

@@ -10,6 +10,13 @@
   justify-content: center;
 }
 
+.trip__input input {
+  height: 40px;
+  font-size: 15px;
+  border: 1px solid #808080;
+  border-radius: 2px;
+}
+
 .trip__input h2 {
   font-size: 15px;
   font-weight: 500;

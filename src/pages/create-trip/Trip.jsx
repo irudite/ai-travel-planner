@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { travelSize, budgetSize } from './../../constants/options.jsx'
-import Autocomplete from "react-google-autocomplete";
+import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import './Trip.css'
 
 const Trip = () => {
   //update DOM, and user preferences for trip
-  const [location, setLocation] = useState(null);
+  const [location, setLocation] = useState("");
   const [tripData, setTripData] = useState([]);
   
   const handleInputChange = (data, value) => {
@@ -14,6 +14,9 @@ const Trip = () => {
       [data]: value,
     })
   }
+
+  //import API keys
+  const googlePlacesAPI = import.meta.env.VITE_GOOGLE_PLACES_API;
 
   return (
     <div class='trip'>
@@ -27,7 +30,15 @@ const Trip = () => {
 
       <div class='trip__input'>
         <h2> Please list your destination </h2>
-        <input placeholder='Enter a place'/> 
+        <GooglePlacesAutocomplete apiKey={googlePlacesAPI}
+        selectProps={{
+          location,
+          onChange: (place) => {
+              setLocation(place);
+              handleInputChange('location', place);
+            }
+        }}
+        />
         <h2> How many days will you be staying? </h2>
         <input type='number' placeholder='i.g 2 days'/> 
       </div>
@@ -58,6 +69,7 @@ const Trip = () => {
             </div>
           ))}
         </div>
+        {console.log(tripData)}
       </div>
 
       <div class='trip__button'>

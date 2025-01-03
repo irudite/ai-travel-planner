@@ -41,8 +41,27 @@
   margin: 5px;
 }
 
+.selected {
+ border: 2px #88bdfc solid;
+ box-shadow: 5px 10px #888888;
+ cursor: pointer;
+}
+
 .trip__options--size {
   display: flex;
   justify-content: center;
   gap: 20px;
+}
+
+.trip__button {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.trip__button button {
+  background: linear-gradient(90deg, #0000 33%, #fff5, #0000 67%) var(--_p,100%)/300% no-repeat,
+    #004dff;
+  color: #ffff;
+  font-size: 15px;
 }

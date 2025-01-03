@@ -14,7 +14,7 @@ const Navbar = () => {
 
       <div class='navbar__container'>
         <nav class='navbar__container__nav'>
-          <a href='#about'> About </a>
+          <a href='/'> About </a>
           <a href='#login'> Login </a>
           <a href='#sign-up'> Sign Up </a>
         </nav>

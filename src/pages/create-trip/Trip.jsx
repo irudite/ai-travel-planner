@@ -1,8 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { travelSize, budgetSize } from './../../constants/options.jsx'
+import Autocomplete from "react-google-autocomplete";
 import './Trip.css'
 
 const Trip = () => {
+  //update DOM, and user preferences for trip
+  const [location, setLocation] = useState(null);
+  const [tripData, setTripData] = useState([]);
+  
+  const handleInputChange = (data, value) => {
+    setTripData({
+      ...tripData,
+      [data]: value,
+    })
+  }
+
   return (
     <div class='trip'>
       <div class='trip__header'>
@@ -24,7 +36,9 @@ const Trip = () => {
         <h2> What is your budget? </h2>
         <div class='trip__options--cost'>
           {budgetSize.map((item, index) => (
-            <div class='trip__options--cost--choices' key={index}>
+            <div className={`trip__options--cost--choices 
+            ${tripData?.budget == item.title ? "selected": ""} 
+            }`} key={index} onClick={() => handleInputChange('budget', item.title)}>
               <h2>{item.icon}</h2>
               <h2>{item.title}</h2>
               <h2>{item.desc}</h2>
@@ -35,7 +49,9 @@ const Trip = () => {
         <h2> How many people are you traveling with? </h2>
         <div class='trip__options--size'>
           {travelSize.map((item, index) => (
-            <div class='trip__options--size--choices' key={index}>
+            <div className={`trip__options--size--choices
+              ${tripData?.size == item.people ? "selected": ""}
+              `} key={index} onClick={() => handleInputChange('size', item.people)}>
               <h2>{item.icon} ({item.people} People)</h2>
               <h2>{item.title}</h2>
               <h2>{item.desc}</h2>
@@ -44,6 +60,9 @@ const Trip = () => {
         </div>
       </div>
 
+      <div class='trip__button'>
+       <button> Generate Trip! </button>
+      </div>
     </div>
   )
 }

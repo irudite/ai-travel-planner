@@ -40,7 +40,8 @@ const Trip = () => {
         }}
         />
         <h2> How many days will you be staying? </h2>
-        <input type='number' placeholder='i.g 2 days'/> 
+        <input value={tripData.days} type='number' placeholder='i.g 2 days'
+        onChange={(e) => handleInputChange('days', e.target.value)}/> 
       </div>
 
       <div class='trip__options'>
@@ -50,9 +51,9 @@ const Trip = () => {
             <div className={`trip__options--cost--choices 
             ${tripData?.budget == item.title ? "selected": ""} 
             }`} key={index} onClick={() => handleInputChange('budget', item.title)}>
-              <h2>{item.icon}</h2>
-              <h2>{item.title}</h2>
-              <h2>{item.desc}</h2>
+              <h2> {item.icon} </h2>
+              <h2> {item.title} </h2>
+              <h2> {item.desc} </h2>
             </div>
           ))} 
         </div>
@@ -63,9 +64,9 @@ const Trip = () => {
             <div className={`trip__options--size--choices
               ${tripData?.size == item.people ? "selected": ""}
               `} key={index} onClick={() => handleInputChange('size', item.people)}>
-              <h2>{item.icon} ({item.people} People)</h2>
-              <h2>{item.title}</h2>
-              <h2>{item.desc}</h2>
+              <h2> {item.icon} | {item.people} person(s) </h2>
+              <h2> {item.title}</h2>
+              <h2> {item.desc}</h2>
             </div>
           ))}
         </div>

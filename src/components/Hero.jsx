@@ -18,7 +18,7 @@ const Hero = () => {
           if you're planning one while still on another. And the 
           benefits of the free version don’t end there! 
           </p>
-          <button class='button-92' role='button'> Sign Up--It's Free! </button>
+          <button href='/create-trip' class='button-92' role='button'> Sign Up--It's Free! </button>
         </div>
       </div>  
     </div>

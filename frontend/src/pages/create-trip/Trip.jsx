@@ -15,6 +15,29 @@ const Trip = () => {
     })
   }
 
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/trips/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(tripData),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Trip created', data);
+      }
+      else {
+        throw new Error('HTTP error!');
+      }
+    }
+    catch (error) {
+      console.error('Error: ', error);
+    }
+  };
+
   //import API keys
   const googlePlacesAPI = import.meta.env.VITE_GOOGLE_PLACES_API;
 
@@ -74,7 +97,7 @@ const Trip = () => {
       </div>
 
       <div class='trip__button'>
-       <button> Generate Trip! </button>
+       <button onClick={handleSubmit}> Generate Trip! </button>
       </div>
     </div>
   )

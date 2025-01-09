@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-router.post('/create', (req, res) => {
+let trips = [];
+
+router.post('/', (req, res) => {
   const { location, days, budget, size } = req.body;
 
   if (!location || !days || !budget || !size) {
@@ -17,8 +19,8 @@ router.post('/create', (req, res) => {
   };
 
   trips.push(newTrip);
-  
-  res.status(201).json(newTrip);
+
+  res.send(newTrip);
 });
 
 module.exports = router;

@@ -7,7 +7,7 @@ const Trip = () => {
   //update DOM, and user preferences for trip
   const [location, setLocation] = useState("");
   const [tripData, setTripData] = useState([]);
-  
+
   const handleInputChange = (data, value) => {
     setTripData({
       ...tripData,
@@ -17,7 +17,7 @@ const Trip = () => {
 
   const handleSubmit = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/trips/create', {
+      const response = await fetch('http://localhost:5000/api/trips/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -45,26 +45,26 @@ const Trip = () => {
     <div class='trip'>
       <div class='trip__header'>
         <h2> Create your dream trip today </h2>
-        <p> 
-          Create detailed itineraries and explore all 
-          the luxuries your location has to offer    
+        <p>
+          Create detailed itineraries and explore all
+          the luxuries your location has to offer
         </p>
       </div>
 
       <div class='trip__input'>
         <h2> Please list your destination </h2>
         <GooglePlacesAutocomplete apiKey={googlePlacesAPI}
-        selectProps={{
-          location,
-          onChange: (place) => {
+          selectProps={{
+            location,
+            onChange: (place) => {
               setLocation(place);
               handleInputChange('location', place);
             }
-        }}
+          }}
         />
         <h2> How many days will you be staying? </h2>
         <input value={tripData.days} type='number' placeholder='i.g 2 days'
-        onChange={(e) => handleInputChange('days', e.target.value)}/> 
+          onChange={(e) => handleInputChange('days', e.target.value)} />
       </div>
 
       <div class='trip__options'>
@@ -72,20 +72,20 @@ const Trip = () => {
         <div class='trip__options--cost'>
           {budgetSize.map((item, index) => (
             <div className={`trip__options--cost--choices 
-            ${tripData?.budget == item.title ? "selected": ""} 
+            ${tripData?.budget == item.title ? "selected" : ""} 
             }`} key={index} onClick={() => handleInputChange('budget', item.title)}>
               <h2> {item.icon} </h2>
               <h2> {item.title} </h2>
               <h2> {item.desc} </h2>
             </div>
-          ))} 
+          ))}
         </div>
 
         <h2> How many people are you traveling with? </h2>
         <div class='trip__options--size'>
           {travelSize.map((item, index) => (
             <div className={`trip__options--size--choices
-              ${tripData?.size == item.people ? "selected": ""}
+              ${tripData?.size == item.people ? "selected" : ""}
               `} key={index} onClick={() => handleInputChange('size', item.people)}>
               <h2> {item.icon} | {item.people} person(s) </h2>
               <h2> {item.title}</h2>
@@ -97,7 +97,7 @@ const Trip = () => {
       </div>
 
       <div class='trip__button'>
-       <button onClick={handleSubmit}> Generate Trip! </button>
+        <button onClick={handleSubmit}> Generate Trip! </button>
       </div>
     </div>
   )
